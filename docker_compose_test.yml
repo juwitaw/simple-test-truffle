@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ganache:
+    image: trufflesuite/ganache-cli:v6.1.0
+    command: ganache-cli -h 0.0.0.0
+    ports:
+      - "8545:8545"
+  truffle_simpletests:
+    image: simpletests:dev
+    environment:
+    - DEVELOPMENT_HOST=ganache
+    command: bash -c "truffle test --network dev"
+    depends_on:
+    - ganache
+    volumes:
+    - .:/simpletests

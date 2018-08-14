@@ -1,0 +1,19 @@
+{
+  "name": "truffle-test-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "solidity-coverage": "^0.5.7"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "coverage": "./node_modules/.bin/solidity-coverage"
+  },
+  "author": "",
+  "license": "ISC"
+}
