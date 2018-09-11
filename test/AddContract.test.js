@@ -8,8 +8,15 @@ contract('AddContract', accounts => {
     contract = await AddContract.new( { from: owner1 } );
   });
 
-  it('has 1 owner and the owner is the deployer', async function () {
-    const total = await contract.addTotal(1);
-    assert.strictEqual(Number(total.logs[0].args.total.valueOf()), 1);
+  it('deployed and storage is 0', async function () {
+    const total = await contract.total();
+    assert.strictEqual(Number(total), 0);
+  });
+
+  it('added 5 to total', async function () {
+    const receipt = await contract.addTotal(5);
+    const total = await contract.total();
+    assert.strictEqual(Number(total), 5);
+    assert.strictEqual(Number(receipt.logs[0].args.total.valueOf()), 1);
   });
 });
